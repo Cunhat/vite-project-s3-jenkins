@@ -2,8 +2,8 @@ pipeline {
   agent any
   
   environment {
-    AWS_ACCESS_KEY_ID = credentials('aws-access-key')
-    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+    AWS_ACCESS_KEY_ID = credentials('deploytos3')
+    AWS_SECRET_ACCESS_KEY = credentials('deploytos3')
     AWS_REGION = 'eu-west-1'
     S3_BUCKET_NAME = 'vite-project-s3-jenkins'
   }
