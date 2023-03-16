@@ -24,8 +24,7 @@ pipeline {
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${env.AWS_REGION}", credentials: 'deploytos3') {
-         // s3Upload(includePathPattern: 'dist/', bucket: "${env.S3_BUCKET_NAME}")
-         s3CopyArtifact( sourceFile: 'dist/**/*', targetBucket: "${env.S3_BUCKET_NAME}", targetFile: 'dist/')
+          s3Upload(includePathPattern: 'dist/', bucket: "${env.S3_BUCKET_NAME}")
         }
       }
     }
