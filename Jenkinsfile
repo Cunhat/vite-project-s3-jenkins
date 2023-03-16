@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    nodejs "nodejs"
+  }
   
   environment {
     AWS_ACCESS_KEY_ID = credentials('deploytos3')
