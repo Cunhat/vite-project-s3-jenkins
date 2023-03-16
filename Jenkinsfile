@@ -17,14 +17,14 @@ pipeline {
       steps {
         sh 'npm install'
         sh 'npm run build'
-        archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
+        archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true, cleanupArtifacts: true
       }
     }
     
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${env.AWS_REGION}", credentials: 'deploytos3') {
-          s3Upload(path: "dist/", includePathPattern: '*/**', bucket: "${env.S3_BUCKET_NAME}", flatten: true)
+          s3Upload(path: "dist/**", includePathPattern: '*/**', bucket: "${env.S3_BUCKET_NAME}", flatten: true)
         }
       }
     }
