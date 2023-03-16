@@ -11,8 +11,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '/usr/local/bin/npm install'
-        sh '/usr/local/bin/npm run build'
+        sh 'npm install'
+        sh 'npm run build'
         archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
       }
     }
