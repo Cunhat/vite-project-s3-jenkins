@@ -24,7 +24,8 @@ pipeline {
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${env.AWS_REGION}", credentials: 'deploytos3') {
-          s3Upload(includePathPattern: 'dist/', bucket: "${env.S3_BUCKET_NAME}", flatten: true)
+          //s3Upload(includePathPattern: 'dist/', bucket: "${env.S3_BUCKET_NAME}", flatten: true)
+          sh 'aws s3 sync --delete dist/ s3://${env.S3_BUCKET_NAME}'
         }
       }
     }
