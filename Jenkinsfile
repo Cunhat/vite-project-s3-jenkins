@@ -20,7 +20,7 @@ pipeline {
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${env.AWS_REGION}", credentials: 'aws-creds') {
-          s3Upload(pathPattern: 'build/**/*', bucket: "${env.S3_BUCKET_NAME}")
+          s3Upload(pathPattern: 'dist/**/*', bucket: "${env.S3_BUCKET_NAME}")
         }
       }
     }
