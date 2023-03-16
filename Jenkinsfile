@@ -17,7 +17,7 @@ pipeline {
       steps {
         sh 'npm install'
         sh 'npm run build'
-        archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true, cleanupArtifacts: true
+        archiveArtifacts artifacts: 'dist/**/*', allowEmptyArchive: true
       }
     }
     
