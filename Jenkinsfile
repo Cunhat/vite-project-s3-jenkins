@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-    nodejs "nodejs"
+    nodejs "19.8.1"
   }
   
   environment {
