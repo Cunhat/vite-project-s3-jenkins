@@ -24,9 +24,8 @@ pipeline {
     stage('Deploy to S3') {
       steps {
         withAWS(region: "${env.AWS_REGION}", credentials: 'deploytos3') {
-          // s3Upload(includePathPattern: 'dist/', bucket: "${env.S3_BUCKET_NAME}")
           s3Delete(bucket: "${env.S3_BUCKET_NAME}", path:'**/*')
-          s3Upload(bucket: "${env.S3_BUCKET_NAME}", workingDir:'dist', includePathPattern:'**/*')
+          //s3Upload(bucket: "${env.S3_BUCKET_NAME}", workingDir:'dist', includePathPattern:'**/*')
         }
       }
     }
